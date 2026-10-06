@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "IFFT · 智能填表工具",
+  "version": "1.4.5",
+  "description": "抖音/小红书作品数据提取与飞书表单自动填充，免安装 Node 环境",
+  "author": "小宇",
+  "permissions": ["storage", "notifications", "alarms"],
+  "host_permissions": [
+    "https://*.douyin.com/*",
+    "https://*.xiaohongshu.com/*",
+    "https://*.feishu.cn/*",
+    "https://*.larksuite.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "IFFT · 智能填表工具（点一下打开面板）"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.douyin.com/*",
+        "https://*.xiaohongshu.com/*",
+        "https://*.feishu.cn/*",
+        "https://*.larksuite.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
